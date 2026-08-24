@@ -125,7 +125,7 @@ npm run dev
 
 ## 🚀 Canlı Demo
 
-Proje Netlify üzerinde yayınlandıktan sonra bağlantı eklenecektir.
+https://taskflow-react2.netlify.app
 
 ## 👨‍💻 Geliştirici
 
