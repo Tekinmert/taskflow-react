@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/set-state-in-effect */
+
 
 import { useState, useEffect } from "react"
 import TaskForm from "./components/TaskForm"
@@ -7,9 +7,11 @@ import TaskList from "./components/TaskList"
 
 function App() {
 
+/* eslint-disable react-hooks/set-state-in-effect */
   const [tasks, setTasks] = useState([])
   const [editTask, setEditTask] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
+
 
 
   useEffect(() => {
@@ -17,7 +19,9 @@ function App() {
     const savedTasks = localStorage.getItem("tasks")
 
     if (savedTasks) {
+
       setTasks(JSON.parse(savedTasks))
+
     }
 
     setIsLoaded(true)
@@ -41,45 +45,72 @@ function App() {
 
 
 
+
+
   const addTask = (task) => {
 
+
     const newTask = {
+
       id: Date.now(),
       ...task
+
     }
 
-    setTasks([
-      ...tasks,
+
+    setTasks((prevTasks) => [
+
+      ...prevTasks,
       newTask
+
     ])
 
   }
 
 
 
+
+
   const deleteTask = (id) => {
 
-    setTasks(
-      tasks.filter((task) => task.id !== id)
+
+    setTasks((prevTasks) =>
+
+      prevTasks.filter(
+        (task) => task.id !== id
+      )
+
     )
 
+
   }
+
+
 
 
 
   const updateTask = (updatedTask) => {
 
-    setTasks(
-      tasks.map((task) =>
+
+    setTasks((prevTasks) =>
+
+      prevTasks.map((task) =>
+
         task.id === updatedTask.id
           ? updatedTask
           : task
+
       )
+
     )
+
 
     setEditTask(null)
 
+
   }
+
+
 
 
 
@@ -91,40 +122,60 @@ function App() {
 
 
 
+
+
   return (
 
     <div className="container py-5">
 
 
       <h1 className="text-center fw-bold">
+
         🚀 TaskFlow
+
       </h1>
 
 
+
       <p className="text-center subtitle">
+
         Görevlerini oluştur, takip et ve yönet
+
       </p>
 
 
 
+
+
       <TaskForm
+
         addTask={addTask}
+
         updateTask={updateTask}
+
         editTask={editTask}
+
       />
 
 
 
+
+
       <TaskList
+
         tasks={tasks}
+
         deleteTask={deleteTask}
+
         selectTask={selectTask}
+
       />
 
 
     </div>
 
   )
+
 
 }
 
