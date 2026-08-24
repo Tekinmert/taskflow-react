@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react"
 import TaskForm from "./components/TaskForm"
 import TaskList from "./components/TaskList"
@@ -7,13 +5,11 @@ import TaskList from "./components/TaskList"
 
 function App() {
 
-/* eslint-disable react-hooks/set-state-in-effect */
   const [tasks, setTasks] = useState([])
   const [editTask, setEditTask] = useState(null)
-  const [isLoaded, setIsLoaded] = useState(false)
 
 
-
+  // LocalStorage'dan görevleri getir
   useEffect(() => {
 
     const savedTasks = localStorage.getItem("tasks")
@@ -24,31 +20,24 @@ function App() {
 
     }
 
-    setIsLoaded(true)
-
   }, [])
 
 
 
+  // Tasks değiştikçe LocalStorage güncelle
   useEffect(() => {
 
-    if (isLoaded) {
+    localStorage.setItem(
+      "tasks",
+      JSON.stringify(tasks)
+    )
 
-      localStorage.setItem(
-        "tasks",
-        JSON.stringify(tasks)
-      )
-
-    }
-
-  }, [tasks, isLoaded])
-
+  }, [tasks])
 
 
 
 
   const addTask = (task) => {
-
 
     const newTask = {
 
@@ -73,7 +62,6 @@ function App() {
 
   const deleteTask = (id) => {
 
-
     setTasks((prevTasks) =>
 
       prevTasks.filter(
@@ -82,7 +70,6 @@ function App() {
 
     )
 
-
   }
 
 
@@ -90,7 +77,6 @@ function App() {
 
 
   const updateTask = (updatedTask) => {
-
 
     setTasks((prevTasks) =>
 
@@ -107,7 +93,6 @@ function App() {
 
     setEditTask(null)
 
-
   }
 
 
@@ -119,7 +104,6 @@ function App() {
     setEditTask(task)
 
   }
-
 
 
 
@@ -142,7 +126,6 @@ function App() {
         Görevlerini oluştur, takip et ve yönet
 
       </p>
-
 
 
 
@@ -175,7 +158,6 @@ function App() {
     </div>
 
   )
-
 
 }
 
