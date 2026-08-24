@@ -1,0 +1,61 @@
+body {
+
+  background: #f1f5f9;
+  font-family: Arial, sans-serif;
+
+}
+
+
+
+.container {
+
+  max-width: 900px;
+
+}
+
+
+
+h1 {
+
+  color: #1e293b;
+  font-size: 45px;
+
+}
+
+
+
+.subtitle {
+
+  color: #64748b;
+  margin-bottom: 40px;
+
+}
+
+
+
+.card {
+
+  border-radius: 18px;
+
+}
+
+
+
+.btn {
+
+  border-radius: 10px;
+
+}
+
+
+
+.badge {
+
+  padding: 10px 15px;
+  font-size: 14px;
+
+}
+.card:hover {
+  transform: translateY(-3px);
+  transition: 0.3s;
+}
